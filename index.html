@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<head>
+  <meta name="charset" content="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="icon" type="image/x-icon" href="../images/png-transparent-national-archives-of-georgia-public-service-hall-public-law-public-service-leaf-text-logo.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap">
+</head>
+
+<header class="header">
+  <div class="logo">
+    <a href="index.html">
+      <img src="images/სახელმწიფო-სერვისების-განვითარების-სააგენტო.png" alt="Logo" class="logo-img">
+    </a>
+  </div>
+    <div class="search-bar-container">
+      <div class="search-bar">
+        <input type="text" placeholder="ძებნა" class="search-input">
+        <span class="filter-icon" id="filterIcon">&#9881;</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Modal for Filter Options -->
+  <div class="modal" id="filterModal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+      <h2>დეტალური ძებნა</h2>
+      <form class="form-grid">
+
+        <!-- Form Fields -->
+        <label for="id-number">დოკუმენტის ნომერი</label>
+      <input type="text" placeholder="დოკუმენტის ნომერი" id="id-number"> 
+
+      <label for="პირადი ნომერი">პირადი ნომერი</label>
+      <input type="text" placeholder="პირადი ნომერი" id="პირადი ნომერი" name="პირადი ნომერი">
+
+        <label for="სახელი">სახელი</label>
+        <input type="text"  placeholder="სახელი" id="სახელი" name="სახელი">
+
+        <label for="გვარი">გვარი</label>
+        <input type="text" placeholder="გვარი" id="გვარი" name="გვარი">
+
+        <label for="date">დაბადების თარიღი</label>
+        <input class="select_part" type="date">
+
+        <label for="აირჩიეთ რეგიონი">აირჩიეთ რეგიონი</label>
+        <select id="აირჩიეთ რეგიონი">
+          <option value="აირჩიეთ რეგიონი">აირჩიეთ რეგიონი</option>
+          <option value="თბილისი">იმერეთი</option>
+          <option value="ქუთაისი">აჭარა</option>
+          <option value="ბათუმი">გურია</option>
+          <option value="ზუგდიდი">სამეგრელო</option>
+        </select>
+
+        <label for="აირჩიეთ ქალაქი">აირჩიეთ ქალაქი</label>
+        <select id="აირჩიეთ ქალაქი">
+          <option value="აირჩიეთ ქალაქი">აირჩიეთ ქალაქი</option>
+          <option value="თბილისი">თბილისი</option>
+          <option value="ქუთაისი">ქუთაისი</option>
+          <option value="ბათუმი">ბათუმი</option>
+          <option value="ზუგდიდი">ზუგდიდი</option>
+        </select>
+
+        <label for="დოკუმენტის ტიპი">დოკუმენტის ტიპი</label>
+        <select id="დოკუმენტის ტიპი">
+          <option value="გასაცემი დოკუმენტი">გასაცემი დოკუმენტი</option>
+          <option value="გარე მომსახურეობა">გარე მომსახურეობა</option>
+        </select>
+
+        <label for="ტიპი">მომხმარებელის ტიპი</label>
+        <select id="ტიპი">
+          <option value="სტუდენტი">სტანდარტული მომხმარებელი</option>
+          <option value="სტუდენტი">სტუდენტი</option>
+          <option value="პატიმარი">პატიმარი</option>
+          <option value="პატიმარი">შშმ პირი</option>
+        </select>
+
+        <label for="გაცემის ტიპი">გაცემის ტიპი</label>
+        <select id="გაცემის ტიპი">
+          <option value="მომსახურე სივრციდან გატანა">მომსახურე სივრციდან გატანა</option>
+          <option value="ფოსტა">ფოსტა</option>
+          <option value="გარე მომსახურება">გარე მომსახურება</option>
+        </select>
+
+        <label for="issuance-deadline">კურიერი</label>
+        <select id="issuance-deadline">
+          <option value="იმავე დღეს">ყველა</option>
+          <option value="იმავე დღეს">კურიერი 1</option>
+          <option value="3 სამუშაო დღე">კურიერი 2</option>
+          <option value="5 სამუშაო დღე">კურიერი 3</option>
+        </select>
+
+        <label for="date">გაცემის დრო</label>
+        <select id="date">
+          <option value="იმავე დღეს">იმავე დღეს</option>
+          <option value="24 საათშ">24 საათში</option>
+          <option value="3 სამუსაო დღე">3 სამუშაო დღე</option>
+          <option value="5 სამუსაო დღე">5 სამუშაო დღე</option>
+          <option value="10 სამუსაო დღე">10 სამუშაო დღე</option>
+        </select>
+
+        <label for="date">აქედან</label>
+        <input class="select_part" type="date">
+
+        <label for="date">მდე</label>
+        <input class="select_part" type="date">
+
+        <button type="button">ძებნა</button>
+      </form>
+    </div>
+  </div>
+
+  <section>
+    <div class="filter-container">
+     
+      <label for="id-number">დოკუმენტის ნომერი</label>
+      <input type="text" placeholder="დოკუმენტის ნომერი" id="id-number">
+
+      <label for="id-number">პირადი ნომერი</label>
+      <input type="text" placeholder="პირადი ნომერი" id="id-number">
+
+      <label for="name">სახელი</label>
+      <input type="text" placeholder="სახელი" id="name">
+  
+      <label for="surname">გვარი</label>
+      <input type="text" placeholder="გვარი" id="surname">
+
+      <label for="region-filter">რეგიონი</label>
+      <select id="region-filter">
+        <option value="">ყველა</option>
+        <option value="იმერეთი">იმერეთი</option>
+        <option value="აჭარა">აჭარა</option>
+        <option value="გურია">გურია</option>
+      </select>
+  
+      <label for="city-filter">ქალაქი</label>
+      <select id="city-filter">
+        <option value="">ყველა</option>
+        <option value="ქუთაისი">ქუთაისი</option>
+        <option value="თბილისი">თბილისი</option>
+        <option value="ბათუმი">ბათუმი</option>
+      </select>
+  
+      <label for="user-type">მომხმარებელის ტიპი</label>
+      <select id="user-type">
+        <option value="სტანდარტული მომხმარებელი">სტანდარტული მომხმარებელი</option>
+        <option value="სტუდენტი">სტუდენტი</option>
+        <option value="პატიმარი">პატიმარი</option>
+        <option value="შშმ პირი">შშმ პირი</option>
+      </select>
+  
+      <label for="გაცემის ტიპი">გაცემის ტიპი</label>
+<select id="გაცემის ტიპი">
+  <option value="მომსახურე სივრციდან გატანა">მომსახურე სივრციდან გატანა</option>
+  <option value="ფოსტა">ფოსტა</option>
+  <option value="გარე მომსახურება">გარე მომსახურება</option>
+</select>
+
+<!-- Empty label for spacing -->
+<label></label>
+
+<!-- Courier Field -->
+<label for="issuance-deadline">კურიერი</label>
+<select id="issuance-deadline">
+  <option value="ყველა">ყველა</option>
+  <option value="კურიერი 1">კურიერი 1</option>
+  <option value="კურიერი 2">კურიერი 2</option>
+  <option value="კურიერი 3">კურიერი 3</option>
+</select>
+  
+      <button type="button" id="filter-button">ძებნა</button>
+    </div>
+  </section>
+  
+  <section class="table-container">
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>მიღების თრიღი</th>
+          <th>გაცემის თარიღი</th>
+          <th>დოკუმენტის ნომერი</th>
+          <th>პირადი ნომერი</th>
+          <th>სახელი</th>
+          <th>გვარი</th>
+          <th>რეგიონი</th>
+          <th>ქალაქი</th>
+          <th>სტატუსი</th>
+          <th>გაცემის ტიპი</th>
+          <th>კურიერი</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr><td colspan="11"><strong>1 დღეში გასაცემი</strong></td></tr>
+        <tr class="newlead">
+          <td>2024-11-01</td>
+          <td>2024-11-01</td>
+          <td>67890111345</td>
+          <td>60009999898</td>
+          <td>გიორგი</td>
+          <td>დეისაძე</td>
+          <td>იმერეთი</td>
+          <td>ქუთაისი</td>
+          <td>სტუდენტი</td>
+          <td>ფოსტა</td>
+          <td>კურიერი 1</td>
+        </tr>
+        <!-- Add more rows as needed -->
+        <tr>
+          <td>2024-11-01</td>
+          <td>2024-11-01</td>
+          <td>67890111345</td>
+          <td>60009999898</td>
+          <td>ნინო</td>
+          <td>დეისაძე</td>
+          <td>იმერეთი</td>
+          <td>ქუთაისი</td>
+          <td>პატიმარი</td>
+          <td>ფოსტა</td>
+          <td>კურიერი 2</td>
+        </tr>
+         <!-- Add more rows as needed -->
+         <tr><td colspan="11"><strong>3 დღეში გასაცემი</strong></td></tr>
+         <tr class="newlead">
+          <td>2024-11-01</td>
+          <td>2024-11-01</td>
+          <td>67890111345</td>
+          <td>60009999898</td>
+          <td>გიორგი</td>
+          <td>დეისაძე</td>
+          <td>იმერეთი</td>
+          <td>ქუთაისი</td>
+          <td>სტუდენტი</td>
+          <td>ფოსტა</td>
+          <td>კურიერი 1</td>
+        </tr>
+         <tr>
+          <td>2024-11-01</td>
+          <td>2024-11-01</td>
+          <td>67890111345</td>
+          <td>60009999898</td>
+          <td>ლადო</td>
+          <td>დეისაძე</td>
+          <td>თბილისი</td>
+          <td>თბილისი</td>
+          <td>შშმ პირი</td>
+          <td>ფოსტა</td>
+          <td>კურიერი 3</td>
+        </tr>
+          <!-- Add more rows as needed -->
+          <tr><td colspan="11"><strong>5 დღეში გასაცემი</strong></td></tr>
+          <tr class="newlead">
+            <td>2024-11-01</td>
+            <td>2024-11-01</td>
+            <td>67890111345</td>
+            <td>60009999898</td>
+            <td>გიორგი</td>
+            <td>დეისაძე</td>
+            <td>იმერეთი</td>
+            <td>ქუთაისი</td>
+            <td>სტუდენტი</td>
+            <td>ფოსტა</td>
+            <td>კურიერი 1</td>
+          </tr>
+          <tr>
+            <td>2024-11-01</td>
+            <td>2024-11-01</td>
+            <td>67890111345</td>
+            <td>60009999898</td>
+            <td>ანა</td>
+            <td>დეისაძე</td>
+            <td>სამეგრელო</td>
+            <td>ზუგდიდი</td>
+            <td>სტანდარტული მომხმარებელი</td>
+            <td>ფოსტა</td>
+            <td>კურიერი 4</td>
+          </tr>
+            <!-- Add more rows as needed -->
+            <tr><td colspan="11"><strong>10 დღეში გასაცემი</strong></td></tr>
+            <tr class="newlead">
+              <td>2024-11-01</td>
+              <td>2024-11-01</td>
+              <td>67890111345</td>
+              <td>60009999898</td>
+              <td>გიორგი</td>
+              <td>დეისაძე</td>
+              <td>იმერეთი</td>
+              <td>ქუთაისი</td>
+              <td>სტუდენტი</td>
+              <td>ფოსტა</td>
+              <td>კურიერი 1</td>
+            </tr>
+            <tr>
+              <td>2024-11-01</td>
+              <td>2024-11-01</td>
+              <td>67890111345</td>
+              <td>60009999898</td>
+              <td>ანა</td>
+              <td>დეისაძე</td>
+              <td>სამეგრელო</td>
+              <td>ზუგდიდი</td>
+              <td>სტანდარტული მომხმარებელი</td>
+              <td>ფოსტა</td>
+              <td>კურიერი 4</td>
+            </tr>
+              <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+  </body>  
+  </html>
